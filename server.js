@@ -2,7 +2,6 @@
 // DEPENDENCIES
 // Series of npm packages that we will use to give our server useful functionality
 // ==============================================================================
-
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -17,12 +16,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+//===========================Listener======================================
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
+});
+
+
 //==============================ROUTER======================================
 // html routes
 require('./routes/htmlRoutes.js')(app);
 // api routes
 require('./routes/apiRoutes.js')(app);
-//===========================Listener======================================
-app.listen(PORT, function() {
-    console.log("App listening on PORT: " + PORT);
-});
