@@ -23,6 +23,6 @@ app.listen(PORT, function() {
 
 //==============================ROUTER======================================
 // html routes
-require('./routes/htmlRoutes.js')(app);
+require('./app/routes/htmlRoutes.js')(app);
 // api routes
-require('./routes/apiRoutes.js')(app);
+require('./app/routes/apiRoutes.js')(app);
