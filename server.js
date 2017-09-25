@@ -6,21 +6,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-constapp = express;
+const app = express();
 
 // Sets an initial port. We"ll use this later in our listener
-var PORT = process.env.PORT.8081
+const PORT = process.env.PORT || 8081;
 
 // BodyParser makes it possible for our server to interpret data sent to it.
 app.use(bodyParser.json());
-app.usebodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //==============================ROUTER======================================
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-
+// html routes
+require('./routes/htmlRoutes.js')(app);
+// api routes
+require('./routes/apiRoutes.js')(app);
 //===========================Listener======================================
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
